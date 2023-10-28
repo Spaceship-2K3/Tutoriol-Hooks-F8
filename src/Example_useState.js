@@ -20,7 +20,7 @@ const courses = [
 function App() {
     const [gift, setGift] = useState("Chưa có phần thưởng");
     const randomGift = () => {
-        const index = gifts[Math.floor(Math.random() * 3)];
+        const index = gifts[Math.floor(Math.random() * gifts.length)];
         setGift(index);
     };
 
@@ -30,96 +30,103 @@ function App() {
             <button onClick={randomGift}>Lấy thưởng </button>
         </div>
     );
-}
-*/
+}*/
 
 // ! Bài 2 : Two-way binding
 // ⁡⁢⁢⁢ReactJS ---> One-Way binding⁡
 // ⁡⁢⁢⁢VueJS ---> Two-Way binding⁡
-// function App() {
-//     /* ⁡⁣⁣⁢VD1 ⁡
-//    const [name, setName] = useState(" ");
-//     const [email, setEmail] = useState(" ");
-//     const handleSubmit = () => {
-//         // todo : CALL API
-//         console.log({
-//             name,
-//             email,
-//         });
-//     };*/
+/*function App() {
+    const [name, setName] = useState(" ");
+    const [email, setEmail] = useState(" ");
+    const handleSubmit = () => {
+        // todo : ⁡⁢⁣⁣CALL API⁡
+        console.log({
+            name,
+            email,
+        });
+    };
 
-//     /* ⁡⁣⁣⁢VD2⁡
-//     const [checked, setChecked] = useState(1); // todo : chọn check mặc định là số 1
-//     const handleRadio = () => {
-//         // Todo : call api
-//         console.log({ id: checked });
-//     };*/
+    return (
+        <div style={{ padding: 20 }}>
+            
+            <input
+                type="text"
+                value={name}
+                placeholder="Name"
+                onChange={(e) => setName(e.target.value)}
+            />
+            <input
+                type="email"
+                value={email}
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+            />
+            <button onClick={handleSubmit}>Login</button>
+        </div>
+    );
+}*/
 
-//     const [checked, setChecked] = useState([]);
-//     const handleCheckbox = (id) => {
-//         setChecked((prev) => {
-//             const isChecked = checked.includes(id);
-//             if (isChecked) {
-//                 // todo : Uncheck
-//                 return checked.filter((item) => item !== id);
-//             } else {
-//                 return [...prev, id];
-//             }
-//         });
-//     };
-//     const handleSubmit = () => {
-//         console.log({ id: checked });
-//     };
+// ! handler Radio
+/*function App() {
+    const [checked, setChecked] = useState(1); // todo : chọn check mặc định là số 1
 
-//     return (
-//         <div style={{ padding: 20 }}>
-//             {/* ⁡⁣⁣⁢VD1       ⁡
-//               <input
-//                 type="text"
-//                 value={name}
-//                 placeholder="Name"
-//                 onChange={(e) => setName(e.target.value)}
-//             />
-//             <input
-//                 type="email"
-//                 value={email}
-//                 placeholder="Email"
-//                 onChange={(e) => setEmail(e.target.value)}
-//             />
+    const handleRadio = () => {
+        // Todo : call api
+        console.log({ id: checked });
+    };
+    return (
+        <div style={{ padding: 20 }}>
+            {courses.map((course) => (
+                <div key={course.id}>
+                    <input
+                        type="radio"
+                        checked={checked === course.id}
+                        style={{ marginRight: 20 }}
+                        onChange={() => setChecked(course.id)}
+                    />
+                    {course.name}
+                </div>
+            ))}
+            <button onClick={handleRadio}>Submit</button>
+        </div>
+    );
+}*/
 
-//             <button onClick={handleSubmit}>Login</button> */}
+// ! handler Checkbox
+/*function App() {
+    const [checked, setChecked] = useState([]);
+    const handleCheckbox = (id) => {
+        setChecked((prev) => {
+            const isChecked = checked.includes(id);
+            if (isChecked) {
+                // todo : Uncheck
+                return checked.filter((item) => item !== id);
+            } else {
+                return [...prev, id];
+            }
+        });
+    };
+    const handleSubmit = () => {
+        console.log({ id: checked });
+    };
 
-//             {/*  ⁡⁣⁣⁢ VD2⁡
-//             {courses.map((course) => (
-//                 <div key={course.id}>
-//                     <input
-//                         type="radio"
-//                         checked={checked === course.id}
-//                         style={{ marginRight: 20 }}
-//                         onChange={() => setChecked(course.id)}
-//                     />
-//                     {course.name}
-//                 </div>
-//             ))}
-
-//             <button onClick={handleRadio}>Submit</button> */}
-
-//             {courses.map((course) => (
-//                 <div key={course.id}>
-//                     <input
-//                         type="checkbox"
-//                         style={{ marginRight: 20 }}
-//                         checked={checked.includes(course.id)}
-//                         onChange={() => handleCheckbox(course.id)}
-//                     />
-//                     {course.name}
-//                 </div>
-//             ))}
-
-//             <button onClick={handleSubmit}>Submit</button>
-//         </div>
-//     );
-// }
+    return (
+        <div style={{ padding: 20 }}>
+            {courses.map((course) => (
+                <div key={course.id}>
+                    <input
+                        type="checkbox"
+                        style={{ marginRight: 20 }}
+                        checked={checked.includes(course.id)}
+                        onChange={() => handleCheckbox(course.id)}
+                    />
+                    {course.name}
+                </div>
+            ))}
+            <button onClick={handleSubmit}>Submit</button>
+        </div>
+    );
+}*/
 
 // ! Bài 3 : Todo List
 function App() {
@@ -140,6 +147,16 @@ function App() {
         setJob("");
     };
 
+    const removeJob = (job) => {
+        setJobs(() => {
+            const newJobs = jobs.filter((item) => {
+                return item !== job;
+            });
+            localStorage.setItem("jobs", JSON.stringify(newJobs));
+            return newJobs;
+        });
+    };
+
     return (
         <div style={{ padding: 20 }}>
             <input
@@ -147,10 +164,24 @@ function App() {
                 value={job}
                 onChange={(e) => setJob(e.target.value)}
             />
-            <button onClick={handleSubmit}>Add</button>
+            <button style={{ marginLeft: 10 }} onClick={handleSubmit}>
+                Add{" "}
+            </button>
             <ul>
                 {jobs.map((job, index) => {
-                    return <li key={index}>{job}</li>;
+                    return (
+                        <li key={index}>
+                            {job}
+                            <button
+                                onClick={() => {
+                                    removeJob(job);
+                                }}
+                                style={{ marginLeft: 10 }}
+                            >
+                                Remove
+                            </button>
+                        </li>
+                    );
                 })}
             </ul>
         </div>
