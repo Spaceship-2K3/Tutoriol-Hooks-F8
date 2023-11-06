@@ -18,7 +18,19 @@ import { useState, useEffect } from "react";
  *      4. Cleanup : Remove listener / Unsubscribe, Clear timer⁡
  */
 
-import Content from "../Content";
+/**
+ ⁡⁢⁣⁣* 1. useEffect(callback)
+    - Gọi callback mỗi khi component re-render
+ * 2. useEffect(callback , [])
+ * 3. useEffect(callback, [deps])⁡
+ */
+
+// ************************************
+// ⁡⁢⁣⁡⁢⁣⁣1. Callback luôn được gọi sau khi component mounted⁡
+// ⁡⁢⁣⁣2. Cleanup function luôn được gọi trước khi component unmounted
+// 3. Cleanup function luôn được gọi trước khi callback( trừ lần mounted)⁡
+
+import Content from "./Content";
 function App() {
     const [show, setShow] = useState(false);
 
