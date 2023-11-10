@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./useEffect/useEffect";
+import App from "./useLayoutEffect/useLayoutEffect";
 import reportWebVitals from "./reportWebVitals";
 
 // ! Fake comments
 // todo : custom event
-function emitComment(id) {
+/*function emitComment(id) {
     setInterval(() => {
         window.dispatchEvent(
             new CustomEvent(`lesson-${id}`, {
@@ -18,7 +18,7 @@ function emitComment(id) {
 
 emitComment(1);
 emitComment(2);
-emitComment(3);
+emitComment(3);*/
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
