@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./useLayoutEffect/useLayoutEffect";
+import App from "./useCallback/useCallback";
 import reportWebVitals from "./reportWebVitals";
 
 // ! Fake comments
