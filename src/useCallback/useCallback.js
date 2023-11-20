@@ -20,9 +20,15 @@ function App() {
     /**
      * - Khi chạy hàm handleIncrease đc lưu vào bộ nhớ và trả ra tham chiếu
      * cho handleIncrease.
-     * - Khi truyền tham chiếu handleIncrease vào prop onIncrease
+     * - Khi truyền tham chiếu handleIncrease vào prop onIncrease lần 1
+     * - Lần thứ 2 trở đi setCount dẫn đến việc re-render lại App , tức là gọi lại
+     * App, mà App lại k liên quan gì đến phạm vi trước đó nữa vậy nên nó sẽ thực
+     * thi lại code ở trong handleIncrease, do nó lại tạo ra 1 tham chiếu mới
      *
+     * - mà memo so sánh === nên những lần tham chiếu khác nhau prop khác nhau
+     * nên memo tưởng nhầm sẽ re-render lại
      */
+
     const handleIncrease = useCallback(() => {
         setCount((preCount) => preCount + 1);
     }, []);
