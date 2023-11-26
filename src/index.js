@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./useReducer/useReducer";
+import App from "./useImperativeHandle/useImperativeHandle";
 import reportWebVitals from "./reportWebVitals";
-
+// import { ThemeProvider } from "./useContext/ThemeContext";
+// import { StoreProvider, App } from "./store";
 // ! Fake comments
 // todo : custom event
 /*function emitComment(id) {
@@ -25,6 +26,19 @@ root.render(
     <React.StrictMode>
         <App />
     </React.StrictMode>
+
+    /*
+    <React.StrictMode>
+        <ThemeProvider>
+            <App />
+        </ThemeProvider>
+    </React.StrictMode>*/
+
+    /*<React.StrictMode>
+        <StoreProvider>
+            <App />
+        </StoreProvider>
+    </React.StrictMode>*/
 );
 
 // If you want to start measuring performance in your app, pass a function
